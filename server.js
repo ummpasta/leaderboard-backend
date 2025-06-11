@@ -7,11 +7,10 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://admin:yourpassword@localhost:27017/leaderboard', {
+mongoose.connect('mongodb://admin:securepassword123@localhost:27017/leaderboard?authSource=admin', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}).then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+});
 
 const leaderboardSchema = new mongoose.Schema({
   name: { type: String, required: true },
